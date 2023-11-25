@@ -3,6 +3,7 @@ const cheerio = require("cheerio");
 const axios = require("axios");
 const fs = require("fs");
 
+const channelId = "1177099398010900500";
 const url = "https://www.allkpop.com/?view=a&feed=a&sort=b";
 
 const client = new Client({
@@ -33,7 +34,7 @@ client.on("ready", async () => {
     console.log(article.title);
     if (alreadySent.includes(article.title)) continue;
     await wait(5000);
-    const channel = await client.channels.fetch("1177099398010900500");
+    const channel = await client.channels.fetch(channelId);
 
     //if text is empty add newLine to next text element and remove empty text element
     for (let i = 0; i < article.text.length; i++) {
